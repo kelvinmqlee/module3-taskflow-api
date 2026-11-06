@@ -75,23 +75,36 @@ jobs:
       DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
 
     steps:
+      - name: Check Docker Hub credentials
+        id: docker-credentials
+        run: |
+          if [[ -n "$DOCKER_USERNAME" && -n "$DOCKER_TOKEN" ]]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Skipping Docker Hub publish. Configure the DOCKER_USERNAME and DOCKER_TOKEN repository secrets to enable publishing."
+          fi
+
       - name: Checkout code
+        if: steps.docker-credentials.outputs.configured == 'true'
         uses: actions/checkout@v7
 
       - name: Get JAR from the build job
+        if: steps.docker-credentials.outputs.configured == 'true'
         uses: actions/download-artifact@v8
         with:
           name: app-jar
           path: target
 
       - name: Build Docker image
+        if: steps.docker-credentials.outputs.configured == 'true'
         run: |
           echo "Building Docker image..."
-          docker build -t $DOCKER_USERNAME/taskflow:latest .
+          docker build -t "$DOCKER_USERNAME/taskflow:latest" .
 
       - name: Push to Docker Hub
+        if: steps.docker-credentials.outputs.configured == 'true'
         run: |
           echo "Logging in to Docker Hub..."
-          echo $DOCKER_TOKEN | docker login -u $DOCKER_USERNAME --password-stdin
+          printf '%s' "$DOCKER_TOKEN" | docker login -u "$DOCKER_USERNAME" --password-stdin
           echo "Pushing image to Docker Hub..."
-          docker push $DOCKER_USERNAME/taskflow:latest
+          docker push "$DOCKER_USERNAME/taskflow:latest"
