@@ -29,7 +29,7 @@ https://module3-taskflow-api-9an9.onrender.com/api/tasks
 
 ## --- Errors and Failures ---
 
-1. I encountered a failed Pipeline run when publishing on GitHub Actions for the first run. I rectified it by updating the approriate Repository Secrets to this repository.
+1. I encountered a failed Pipeline run when publishing on GitHub Actions for the first run. I rectified it by updating the appropriate Repository Secrets to this repository.
 
 2. I do not fully understand the coding in .circleci/config.yml, therefore I encountered quite a few "deploy" errors before knowing what to edit in the coding to make the whole project work successfully, after learning how to implement the coding for this assignment.
 
@@ -92,4 +92,4 @@ After clarification with trainer Jesstern, I learned that there is no conflict i
 
 
 #### Notes:
-I have discovered 1 CRITICAL security issue and 3 LOW security issues in total, after running Snyk Code Test and Synk Test CLI commands, and I have implemented the necessary changes to pom.xml so as to validate and override the security issues. As I have also verified with Co-Pilot regarding the security issues, only 1 LOW security issue was recommended to be ignored, while the rest are to be fixed. I ran the approriate CLI command to ignore that issue, thus creating the .snyk file in the root folder.
+I have discovered 1 CRITICAL security issue and 3 LOW security issues in total, after running Snyk Code Test and Snyk Test CLI commands, and I have implemented the necessary changes to pom.xml so as to validate and override the security issues. As I have also verified with Co-Pilot regarding the security issues, only 1 LOW security issue was safe to be ignored, while the rest are to be fixed. I ran the appropriate CLI command to ignore that issue, thus creating the .snyk file in the root folder.
