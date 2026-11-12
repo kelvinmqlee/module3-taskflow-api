@@ -123,7 +123,7 @@ jobs:
           name: Redeploy latest image on Render and wait
           command: |
             echo "Asking Render to redeploy the latest image..."
-            render deploys create "$RENDER_SERVICE_ID" --wait --confirm --output text --image "docker.io/$DOCKER_USERNAME/taskflow:latest"
+            render deploys create "$RENDER_SERVICE_ID" --wait --confirm --output text
             echo "The new version is live on Render."
 
   # ==========================================
