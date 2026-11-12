@@ -92,4 +92,4 @@ After clarification with trainer Jesstern, I learned that there is no conflict i
 
 
 #### Notes:
-I have discovered 1 CRITICAL security issue and 3 LOW security issues in total, after running Snyk Code Test and Snyk Test CLI commands, and I have implemented the necessary changes to pom.xml so as to validate and override the security issues. As I have also verified with Co-Pilot regarding the security issues, only 1 LOW security issue was safe to be ignored, while the rest are to be fixed. I ran the appropriate CLI command to ignore that issue, thus creating the .snyk file in the root folder.
+I have discovered 1 CRITICAL security issue and 3 LOW security issues in total, after running Snyk Code Test and Snyk Test CLI commands, and I have implemented the necessary changes to pom.xml in order to validate and override the security issues. As I have also verified with Co-Pilot regarding the security issues, only 1 LOW security issue is safe to be ignored, while the rest are to be fixed. I ran the appropriate CLI command to ignore that issue, and thus creating the .snyk file in the root folder. Refer to the .snyk file for more details on the ignored security issue.
